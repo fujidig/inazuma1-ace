@@ -8,7 +8,7 @@ data = "
 BASE_ADDR = 0x0228ec8c
 
 
-bin = File.binread("nds_red_stop.bin")
+bin = File.binread("main.bin")
 
 data += [BASE_ADDR + 3 * 0x20 + 32 + 36 + 4].pack("V")
 data += bin

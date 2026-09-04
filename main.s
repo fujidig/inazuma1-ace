@@ -13,12 +13,12 @@
 .equ WRAMCNT, 0x04000247
 .equ BASE_ADDR, 0x0228ec8c
 
-.section .text.nds_red_stop, "ax", %progbits
+.section .text.main, "ax", %progbits
 .align 2
 .arm
-.global nds_red_stop
-.type nds_red_stop, %function
-nds_red_stop:
+.global main
+.type main, %function
+main:
     // Disable IRQ and FIQ.
     mrs     r0, cpsr
     orr     r0, r0, #0xc0
@@ -210,7 +210,7 @@ repeat_block8x4:
     bne     1b
     bx      lr
 
-foolish_addr: .word (BASE_ADDR + 3 * 0x20 + 32 + 36 + 4 + (foolish - nds_red_stop))
+foolish_addr: .word (BASE_ADDR + 3 * 0x20 + 32 + 36 + 4 + (foolish - main))
 foolish:
     ldr r0, addr0
     ldr r0, addr0
